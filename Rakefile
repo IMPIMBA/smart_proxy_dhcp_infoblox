@@ -1,8 +1,9 @@
+# encoding: utf-8
 require 'rake'
 require 'rake/testtask'
 
 desc 'Default: run unit tests.'
-task :default => :test
+task default: :test
 
 desc 'Test the Foreman Proxy plugin.'
 Rake::TestTask.new(:test) do |t|

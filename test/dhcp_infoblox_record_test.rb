@@ -1,22 +1,21 @@
+# encoding: utf-8
 require 'test_helper'
 require 'dns/dns_plugin'
 require 'smart_proxy_dhcp_infoblox/dhcp_infoblox_plugin'
 require 'smart_proxy_dhcp_infoblox/dhcp_infoblox_main'
 
-
 class InfobloxRecordTest < Test::Unit::TestCase
-
   def test_default_settings
     Proxy::Dns::Infoblox::Plugin.load_test_settings({})
-    assert_equal "default_value", Proxy::Dns::Nsupdate::Plugin.settings.required_setting
-    assert_equal "/must/exist", Proxy::Dns::Nsupdate::Plugin.settings.required_path
+    assert_equal 'default_value', Proxy::Dns::Nsupdate::Plugin.settings.required_setting
+    assert_equal '/must/exist', Proxy::Dns::Nsupdate::Plugin.settings.required_path
   end
 
   def test_initialized_correctly
-    Proxy::Dns::Infoblox::Plugin.load_test_settings(:example_setting => 'a_value',
-                                                          :required_setting => 'required_setting',
-                                                          :optional_path => '/some/path',
-                                                          :required_path => '/required/path')
+    Proxy::Dns::Infoblox::Plugin.load_test_settings(example_setting: 'a_value',
+                                                    required_setting: 'required_setting',
+                                                    optional_path: '/some/path',
+                                                    required_path: '/required/path')
 
     assert_equal 'a_value', klass.new.example_setting
     assert_equal 'required_value', klass.new.required_setting

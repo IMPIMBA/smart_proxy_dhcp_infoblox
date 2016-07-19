@@ -1,3 +1,4 @@
+# encoding: utf-8
 require File.expand_path('../lib/smart_proxy_dhcp_infoblox/dhcp_infoblox_version', __FILE__)
 require 'date'
 

@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'dhcp_common/dependency_injection/dependencies'
 
 class Proxy::DHCP::DependencyInjection::Dependencies

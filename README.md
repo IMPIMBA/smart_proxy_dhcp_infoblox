@@ -1,7 +1,5 @@
 # SmartProxyDhcpInfoblox
 
-*Introduction here*
-
 This plugin adds a new DHCP provider for managing records with Infoblox Servers
 
 ## Installation
@@ -19,14 +17,24 @@ To enable this DHCP provider, edit `/etc/foreman-proxy/settings.d/dhcp.yml` and 
 
 Configuration options for this plugin are in `/etc/foreman-proxy/settings.d/dhcp_infoblox.yml` and include:
 
-* infoblox_user: API Username
-* infoblox_pw: API Password
-* infoblox_host: IP/URL to infoblox Server
+- **infoblox_user:** API Username
+- **infoblox_pw:** API Password
+- **infoblox_host:** IP/URL to Infoblox Server
+- **record_type:** The record type to generate. Can be 'host' or 'fixed_address'
+- **delete_host:** When using host records delete the host if it has no remaining IP addresses.
+- **wapi_version:** Which version of the Infoblox API to use. This plugin has only been tested with '2.0'
 
-//// TEMP ////
-Add this to the Smart Proxy's bundler.d/Gemfile.local.rb configuration:
+## Internals
 
-  gem 'smart_proxy_dhcp_infoblox', :path => '/path/tosmart_proxy_dhcp_infoblox'
+### Getting the next free IP address
+
+If a range (start address and end address) is defined for the subnet in Foreman, this plugin
+will try to look for the matching range in the Infoblox Appliance and request the next free IP
+address.
+
+Should no range be specified for the subnet it will request the next free IP address of the subnet
+from the Infoblox Appliance.
+Exclusions, etc. should be handled in the appliance in this case.
 
 ## Contributing
 
@@ -34,7 +42,7 @@ Fork and send a Pull Request. Thanks!
 
 ## Copyright
 
-Copyright (c) 2016 Klaas Demter
+Copyright (c) 2016 Klaas Demter, Georg Rath
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

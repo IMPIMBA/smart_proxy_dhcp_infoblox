@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'dhcp_common/dhcp_common'
 require 'smart_proxy_dhcp_infoblox/dhcp_infoblox_plugin'
 
